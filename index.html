@@ -57,7 +57,7 @@
                         },
                         url: 'http://api.stackoverflow.com/0.8/questions/' + questionId[0] + '?jsonp=?',
                         success: function(data) {
-                            item.append('<div class="stacktack-container"><h3>' + data.questions[0].title + '</h3>' + data.questions[0].body + '</div>');
+                            item.append('<div class="stacktack-container"><div class="stacktack-question"><h3>' + data.questions[0].title + '</h3><div class="stacktack-question-body">' + data.questions[0].body + '</div></div></div>');
                         }
                     });
                 });
