@@ -24,12 +24,17 @@
             border-bottom: solid 1px #CCCCCC;
         }
         
-        .stacktack-container code
+        .stacktack-container pre
         {
             display: block;
             padding: 10px;
             overflow: auto;
-            
+
+            background: #DDDDDD;
+        }
+        
+        .stacktack-container code
+        {
             background: #DDDDDD;
             font-size: 1.1em;
         }
@@ -82,7 +87,6 @@
                             for (var i = 0; i < question.answers.length; i++)
                             {
                             	var answer = question.answers[i];
-                            	console.log(answer);
                             	var answerElement = containerElement.append('<div class="stacktack-answer"><h4>Answer ' + (i + 1) + '</h4><div class="stacktack-answer-body">' + answer.body + '</div></div>').find('stacktack-answer');
                             	if (answer.accepted)
                             	{
@@ -100,6 +104,6 @@
         <h1>StackTack Demo</h1>
         <p>Below is a <a href="http://www.stackoverflow.com/questions/2893858" target="_blank">StackOverflow question</a> that has been dynamically loaded from the StackApps API (Application Programming Interface) via StackTack.</p>
         
-        <div id="stacktack-2893858"></div>
+        <div id="stacktack-518021" class="margin-medium"></div>
     </body>
 </html>
