@@ -34,6 +34,26 @@
             font-size: 1.1em;
         }
         
+        .stacktack-container blockquote
+        {
+        	display: block;
+        	padding: 0px 10px;
+        	margin: 0px;
+        	overflow: auto;
+
+			background: #DDDDDD;
+        }
+        
+        .stacktack-answer
+        {
+        	border-top: dotted 1px #CCCCCC;
+        }
+        
+        .stacktack-answer-accepted
+        {
+        	background: #FFFFFF;
+        }
+        
         * + .margin-medium
         {
         	margin-top: 1em;
@@ -46,7 +66,6 @@
                 $('[id^=stacktack]').each(function(index, value) {
                     var item = $(value);
                     var questionId = /\d+$/.exec(value.id);
-                    console.log(questionId[0]);
 
                     $.ajax({
                         dataType: 'jsonp',
@@ -57,7 +76,19 @@
                         },
                         url: 'http://api.stackoverflow.com/0.8/questions/' + questionId[0] + '?jsonp=?',
                         success: function(data) {
-                            item.append('<div class="stacktack-container"><div class="stacktack-question"><h3>' + data.questions[0].title + '</h3><div class="stacktack-question-body">' + data.questions[0].body + '</div></div></div>');
+                        	var question = data.questions[0];
+                        	var containerElement = item.append('<div class="stacktack-container"></div>').find('.stacktack-container');
+                            containerElement.append('<div class="stacktack-question"><h3>' + question.title + '</h3><div class="stacktack-question-body">' + question.body + '</div></div>');
+                            for (var i = 0; i < question.answers.length; i++)
+                            {
+                            	var answer = question.answers[i];
+                            	console.log(answer);
+                            	var answerElement = containerElement.append('<div class="stacktack-answer"><h4>Answer ' + (i + 1) + '</h4><div class="stacktack-answer-body">' + answer.body + '</div></div>').find('stacktack-answer');
+                            	if (answer.accepted)
+                            	{
+                            		answerElement.addClass('stacktack-answer-accepted');
+                            	}
+                            }
                         }
                     });
                 });
@@ -70,6 +101,5 @@
         <p>Below is a <a href="http://www.stackoverflow.com/questions/2893858" target="_blank">StackOverflow question</a> that has been dynamically loaded from the StackApps API (Application Programming Interface) via StackTack.</p>
         
         <div id="stacktack-2893858"></div>
-        <div id="stacktack-518021" class="margin-medium"></div>
     </body>
 </html>
