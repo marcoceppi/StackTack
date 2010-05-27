@@ -58,6 +58,24 @@
         {
             color: #00CC00;
         }
+
+        .stacktack-tags
+        {
+            padding: 0px;
+        }
+        
+        .stacktack-tags li
+        {
+            display: inline;
+            padding: 0.2em 0.4em;
+            margin-right: 0.5em;
+            
+            border-right: solid 1px #CCCCCC;
+            border-bottom: solid 1px #CCCCCC;
+            background: #DDDDDD;
+            list-style: none inside;
+            color: #999999;
+        }
         
         * + .margin-medium
         {
@@ -84,8 +102,18 @@
                             var question = data.questions[0];
                             var containerElement = $('<div class="stacktack-container"></div>');
                             item.append(containerElement);
+
                             var questionElement = $('<div class="stacktack-question"><h3>' + question.title + '</h3><div class="stacktack-question-body">' + question.body + '</div></div>');
                             containerElement.append(questionElement);
+
+                            var tagsElement = $('<ul class="stacktack-tags"></ul>');
+                            for (var i = 0; i < question.tags.length; i++)
+                            {
+                                var tagElement = $('<li>' + question.tags[i] + '</li>');
+                                tagsElement.append(tagElement);
+                            }
+                            questionElement.append(tagsElement);
+
                             var answersElement = $('<div class="stacktack-answers"></div>');
                             containerElement.append(answersElement);
                             for (var i = 0; i < question.answers.length; i++)
