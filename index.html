@@ -41,27 +41,27 @@
         
         .stacktack-container blockquote
         {
-        	display: block;
-        	padding: 0px 10px;
-        	margin: 0px;
-        	overflow: auto;
+            display: block;
+            padding: 0px 10px;
+            margin: 0px;
+            overflow: auto;
 
-			background: #DDDDDD;
+            background: #DDDDDD;
         }
         
         .stacktack-answer
         {
-        	border-top: dotted 1px #CCCCCC;
+            border-top: dotted 1px #CCCCCC;
         }
         
-        .stacktack-answer-accepted
+        .stacktack-answer-accepted h4
         {
-        	background: #FFFFFF;
+            color: #00CC00;
         }
         
         * + .margin-medium
         {
-        	margin-top: 1em;
+            margin-top: 1em;
         }
         </style>
         
@@ -81,19 +81,22 @@
                         },
                         url: 'http://api.stackoverflow.com/0.8/questions/' + questionId[0] + '?jsonp=?',
                         success: function(data) {
-                        	var question = data.questions[0];
-                        	var containerElement = item.append('<div class="stacktack-container"></div>').find('.stacktack-container');
-                            containerElement.append('<div class="stacktack-question"><h3>' + question.title + '</h3><div class="stacktack-question-body">' + question.body + '</div></div>');
-                            var answersElement = containerElement.append('<div class="stacktack-answers"></div>').find('.stacktack-answers');
+                            var question = data.questions[0];
+                            var containerElement = $('<div class="stacktack-container"></div>');
+                            item.append(containerElement);
+                            var questionElement = $('<div class="stacktack-question"><h3>' + question.title + '</h3><div class="stacktack-question-body">' + question.body + '</div></div>');
+                            containerElement.append(questionElement);
+                            var answersElement = $('<div class="stacktack-answers"></div>');
+                            containerElement.append(answersElement);
                             for (var i = 0; i < question.answers.length; i++)
                             {
-                            	var answer = question.answers[i];
-                            	var answerElement = answersElement.append('<div class="stacktack-answer"><h4>Answer ' + (i + 1) + '</h4><div class="stacktack-answer-body">' + answer.body + '</div></div>').find('stacktack-answer');
-                            	
-                            	if (answer.accepted)
-                            	{
-                            		answerElement.addClass('stacktack-answer-accepted');
-                            	}
+                                var answer = question.answers[i];
+                                var answerElement = $('<div class="stacktack-answer"><h4>Answer ' + (i + 1) + '</h4><div class="stacktack-answer-body">' + answer.body + '</div></div>');
+                                answersElement.append(answerElement);
+                                if (answer.accepted)
+                                {
+                                    answerElement.addClass('stacktack-answer-accepted');
+                                }
                             }
                         }
                     });
