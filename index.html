@@ -106,6 +106,9 @@
                             var questionElement = $('<div class="stacktack-question"><h3>' + question.title + '</h3><div class="stacktack-question-body">' + question.body + '</div></div>');
                             containerElement.append(questionElement);
 
+                            var profileElement = $('<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + question.owner.email_hash + '?d=identicon&s=40" /></div>');
+                            questionElement.append(profileElement);
+
                             var tagsElement = $('<ul class="stacktack-tags"></ul>');
                             for (var i = 0; i < question.tags.length; i++)
                             {
