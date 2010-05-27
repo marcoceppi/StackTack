@@ -84,10 +84,12 @@
                         	var question = data.questions[0];
                         	var containerElement = item.append('<div class="stacktack-container"></div>').find('.stacktack-container');
                             containerElement.append('<div class="stacktack-question"><h3>' + question.title + '</h3><div class="stacktack-question-body">' + question.body + '</div></div>');
+                            var answersElement = containerElement.append('<div class="stacktack-answers"></div>').find('.stacktack-answers');
                             for (var i = 0; i < question.answers.length; i++)
                             {
                             	var answer = question.answers[i];
-                            	var answerElement = containerElement.append('<div class="stacktack-answer"><h4>Answer ' + (i + 1) + '</h4><div class="stacktack-answer-body">' + answer.body + '</div></div>').find('stacktack-answer');
+                            	var answerElement = answersElement.append('<div class="stacktack-answer"><h4>Answer ' + (i + 1) + '</h4><div class="stacktack-answer-body">' + answer.body + '</div></div>').find('stacktack-answer');
+                            	
                             	if (answer.accepted)
                             	{
                             		answerElement.addClass('stacktack-answer-accepted');
