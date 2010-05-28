@@ -15,10 +15,10 @@
         
         .stacktack-container
         {
-            padding: 40px 20px 10px 30px;
+            padding: 10px 0 0 10px;
             min-height: 140px;
             
-            background: #FFFFFF url(corner.png) top left no-repeat;
+            background: transparent url(corner.png) top left no-repeat;
         }
         
         .stacktack-container h3
@@ -49,6 +49,21 @@
             overflow: auto;
 
             background: #DDDDDD;
+        }
+        
+        .stacktack-content
+        {
+            position: relative;
+            padding: 30px 20px 10px 20px;
+
+            border: solid 1px #CCCCCC;
+            background: #FFFFFF;
+        }
+        
+        .stacktack-logo
+        {
+            position: absolute;
+            top: -8px;
         }
         
         .stacktack-answer
@@ -104,9 +119,12 @@
                             var question = data.questions[0];
                             var containerElement = $('<div class="stacktack-container"></div>');
                             item.append(containerElement);
+                            
+                            var contentElement = $('<div class="stacktack-content"><img src="logo.png" alt="StackTack" class="stacktack-logo" /></div>');
+                            containerElement.append(contentElement);
 
                             var questionElement = $('<div class="stacktack-question"><h3>' + question.title + '</h3><div class="stacktack-question-body">' + question.body + '</div></div>');
-                            containerElement.append(questionElement);
+                            contentElement.append(questionElement);
 
                             var profileElement = $('<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + question.owner.email_hash + '?d=identicon&s=40" /></div>');
                             questionElement.append(profileElement);
@@ -120,7 +138,7 @@
                             questionElement.append(tagsElement);
 
                             var answersElement = $('<div class="stacktack-answers"></div>');
-                            containerElement.append(answersElement);
+                            contentElement.append(answersElement);
                             for (var i = 0; i < question.answers.length; i++)
                             {
                                 var answer = question.answers[i];
