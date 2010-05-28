@@ -26,11 +26,6 @@
             background: transparent url(corner.png) top left no-repeat;
         }
         
-        .stacktack-container h3
-        {
-            border-bottom: solid 1px #CCCCCC;
-        }
-        
         .stacktack-container pre
         {
             display: block;
@@ -56,6 +51,11 @@
             background: #DDDDDD;
         }
         
+        .stacktack-question h3
+        {
+            font-size: 1.5em;
+        }
+        
         .stacktack-content
         {
             position: relative;
@@ -71,14 +71,33 @@
             left: 10px;
         }
         
+        .stacktack-profile
+        {
+            float: right;
+            padding: 0.4em;
+            width: 140px;
+            overflow: hidden;
+            
+            background: #EEEEEE;
+        }
+        
+        .stacktack-gravatar
+        {
+            float: left;
+            margin-right: 0.4em;
+        }
+        
         .stacktack-answer
         {
+            padding-top: 0.4em;
+            
             border-top: dotted 1px #CCCCCC;
         }
         
         .stacktack-answer-accepted h4
         {
             color: #00CC00;
+            font-size: 1.2em;
         }
 
         .stacktack-tags
@@ -128,11 +147,8 @@
                             var contentElement = $('<div class="stacktack-content"><img src="logo.png" alt="StackTack" class="stacktack-logo" /></div>');
                             containerElement.append(contentElement);
 
-                            var questionElement = $('<div class="stacktack-question"><h3>' + question.title + '</h3><div class="stacktack-question-body">' + question.body + '</div></div>');
+                            var questionElement = $('<div class="stacktack-question"> <div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + question.owner.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + question.owner.display_name + '<br/>' + question.owner.reputation + '</div> <h3>' + question.title + '</h3><div class="stacktack-question-body">' + question.body + '</div></div>');
                             contentElement.append(questionElement);
-
-                            var profileElement = $('<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + question.owner.email_hash + '?d=identicon&s=40" /></div>');
-                            questionElement.append(profileElement);
 
                             var tagsElement = $('<ul class="stacktack-tags"></ul>');
                             for (var i = 0; i < question.tags.length; i++)
@@ -147,7 +163,7 @@
                             for (var i = 0; i < question.answers.length; i++)
                             {
                                 var answer = question.answers[i];
-                                var answerElement = $('<div class="stacktack-answer"><h4>Answer ' + (i + 1) + '</h4><div class="stacktack-answer-body">' + answer.body + '</div></div>');
+                                var answerElement = $('<div class="stacktack-answer"> <div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + answer.owner.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + answer.owner.display_name + '<br/>' + answer.owner.reputation + '</div> <h4>Answer ' + (i + 1) + '</h4><div class="stacktack-answer-body">' + answer.body + '</div></div>');
                                 answersElement.append(answerElement);
                                 if (answer.accepted)
                                 {
