@@ -25,7 +25,7 @@
                         'apikey':'kz4oNmbazUGoJIUyUbSaLg',
                         'body': 'true'
                     },
-                    url: 'http://api.stackoverflow.com/0.8/questions/' + questionId[0] + '?jsonp=?',
+                    url: 'http://api.' + options.site + '/' + options.apiVersion + '/questions/' + questionId[0] + '?jsonp=?',
                     success: function(data) {
                         var question = data.questions[0];
                         var containerElement = $('<div class="stacktack-container"></div>');
@@ -34,7 +34,7 @@
                         var contentElement = $('<div class="stacktack-content"><img src="logo.png" alt="StackTack" class="stacktack-logo" /></div>');
                         containerElement.append(contentElement);
 
-                        var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix"><div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + question.owner.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + question.owner.display_name + '<br/>' + question.owner.reputation + '</div> <h3>' + question.title + '</h3></div><div class="stacktack-question-body">' + question.body + '</div></div>');
+                        var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix"><div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + question.owner.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + question.owner.display_name + '<br/>' + question.owner.reputation + '</div> <h3><a href="http://www.' + options.site + question.question_timeline_url + '" target="_blank">' + question.title + '</a></h3></div><div class="stacktack-question-body">' + question.body + '</div></div>');
                         contentElement.append(questionElement);
 
                         var tagsElement = $('<ul class="stacktack-tags"></ul>');
@@ -66,6 +66,8 @@
     };
 
     $.fn.stacktack.defaults = {
+        site: 'stackoverflow.com',
+        apiVersion: 0.8,
         stylesheet: 'stacktack.css'
     };
 
