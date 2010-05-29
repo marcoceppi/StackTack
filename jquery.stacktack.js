@@ -34,7 +34,7 @@
                         var contentElement = $('<div class="stacktack-content"><img src="logo.png" alt="StackTack" class="stacktack-logo" /></div>');
                         containerElement.append(contentElement);
 
-                        var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix"><div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + question.owner.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + question.owner.display_name + '<br/>' + question.owner.reputation + '</div> <h3><a href="http://www.' + options.site + question.question_timeline_url + '" target="_blank">' + question.title + '</a></h3></div><div class="stacktack-question-body">' + question.body + '</div></div>');
+                        var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix"><div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + question.owner.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + question.owner.display_name + '<br/>' + question.owner.reputation + '</div> <h3><a href="http://www.' + options.site + '/questions/' + question.question_id + '" target="_blank">' + question.title + '</a></h3></div><div class="stacktack-question-body">' + question.body + '</div></div>');
                         contentElement.append(questionElement);
 
                         var tagsElement = $('<ul class="stacktack-tags"></ul>');
@@ -50,7 +50,7 @@
                         for (var i = 0; i < question.answers.length; i++)
                         {
                             var answer = question.answers[i];
-                            var answerElement = $('<div class="stacktack-answer"> <div class="stacktack-answer-header clearfix"><div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + answer.owner.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + answer.owner.display_name + '<br/>' + answer.owner.reputation + '</div> <h4>Answer ' + (i + 1) + '</h4></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
+                            var answerElement = $('<div class="stacktack-answer"> <div class="stacktack-answer-header clearfix"><div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + answer.owner.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + answer.owner.display_name + '<br/>' + answer.owner.reputation + '</div> <h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
                             answersElement.append(answerElement);
                             if (answer.accepted)
                             {
