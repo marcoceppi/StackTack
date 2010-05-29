@@ -4,11 +4,12 @@
         
         if (options.stylesheet)
         {
-//            if ()
-//            {
+            // only include the stylesheet once
+            if ($('link[title=stacktack]'))
+            {
                 var link = $('<link type="text/css" rel="stylesheet" href="' + options.stylesheet + '" title="stacktack">');
                 $('head').append(link);
-//            }
+            }
         }
         
         return this.each(function() {

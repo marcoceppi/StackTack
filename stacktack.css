@@ -62,6 +62,7 @@ html[xmlns] .clearfix
 .stacktack-question h3
 {
     font-size: 1.5em;
+    margin: 0;
 }
 
 .stacktack-content
@@ -105,7 +106,7 @@ html[xmlns] .clearfix
 
 .stacktack-answer h4
 {
-    margin-top: 0;
+    margin: 0;
     font-size: 1.2em;
 }
 
