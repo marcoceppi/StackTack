@@ -75,6 +75,14 @@ h1, h2, h3, h4, h5, h6
     background: #DDDDDD;
 }
 
+.stacktack-question
+{
+    margin-top: 0.8em;
+    padding-top: 0.8em;
+    
+    border-top: solid 1px #DDDDDD;
+}
+
 .stacktack-question h3
 {
     margin: 0;
@@ -116,7 +124,7 @@ h1, h2, h3, h4, h5, h6
 
 .stacktack-answer
 {
-    padding-top: 0.4em;
+    padding-top: 0.8em;
     
     border-top: dotted 1px #CCCCCC;
 }
