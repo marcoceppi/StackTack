@@ -29,6 +29,8 @@ html[xmlns] .clearfix
     padding: 10px 10px 0 10px;
     min-height: 140px;
     
+    font-family: Arial, Helvetica, san-serif;
+    font-size: 1em;
     background: transparent url(corner.png) top left no-repeat;
 }
 
@@ -84,6 +86,7 @@ html[xmlns] .clearfix
     width: 140px;
     overflow: hidden;
     
+    font-size: 12px;
     background: #EEEEEE;
 }
 
