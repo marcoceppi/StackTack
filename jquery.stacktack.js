@@ -2,6 +2,15 @@
     $.fn.stacktack = function(options) {
         var options = $.extend($.fn.stacktack.defaults, options);
         
+        if (options.stylesheet)
+        {
+//            if ()
+//            {
+                var link = $('<link type="text/css" rel="stylesheet" href="' + options.stylesheet + '" title="stacktack">');
+                $('head').append(link);
+//            }
+        }
+        
         return this.each(function() {
             $(this).find('[id^=stacktack]').andSelf().filter('[id^=stacktack]').each(function(index, value) {
                 var item = $(value);
@@ -55,7 +64,7 @@
     };
 
     $.fn.stacktack.defaults = {
-        stylesheetUrl: 'stacktack.css'
+        stylesheet: 'stacktack.css'
     };
 
 })(jQuery);
