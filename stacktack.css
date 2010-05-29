@@ -24,6 +24,17 @@ html[xmlns] .clearfix
 	height: 1%;
 }
 
+.stacktack-container a, .stacktack-container a:link, .stacktack-container a:visited
+{
+    color: #588FC7;
+    text-decoration: none;
+}
+
+.stacktack-container a:hover
+{
+    color: #8CB3D9;
+}
+
 .stacktack-container
 {
     padding: 10px 10px 0 10px;
@@ -32,6 +43,11 @@ html[xmlns] .clearfix
     font-family: Arial, Helvetica, san-serif;
     font-size: 13px;
     background: transparent url(corner.png) top left no-repeat;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+    color: #588FC7;
 }
 
 .stacktack-container pre
@@ -61,8 +77,9 @@ html[xmlns] .clearfix
 
 .stacktack-question h3
 {
-    font-size: 1.5em;
     margin: 0;
+
+    font-size: 1.5em;
 }
 
 .stacktack-content
