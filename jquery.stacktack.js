@@ -43,17 +43,20 @@
                         var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix">' + createProfile(question.owner) + '<h3><a href="http://www.' + options.site + '/questions/' + question.question_id + '" target="_blank">' + question.title + '</a></h3><div class="stacktack-votes">' + question.score + ' Votes</div></div><div class="stacktack-question-body">' + question.body + '</div></div>');
                         contentElement.append(questionElement);
 
-                        var tagsElement = $('<ul class="stacktack-tags"></ul>');
-                        for (var i = 0; i < question.tags.length; i++)
+                        if (options.showTags)
                         {
-                            var tagElement = $('<li>' + question.tags[i] + '</li>');
-                            tagsElement.append(tagElement);
+                            var tagsElement = $('<ul class="stacktack-tags"></ul>');
+                            for (var i = 0; i < question.tags.length; i++)
+                            {
+                                var tagElement = $('<li>' + question.tags[i] + '</li>');
+                                tagsElement.append(tagElement);
+                            }
+                            questionElement.append(tagsElement);
                         }
-                        questionElement.append(tagsElement);
 
                         var answersElement = $('<div class="stacktack-answers"></div>');
                         contentElement.append(answersElement);
-                        
+
                         // filter the answers
                         var visibleAnswers = new Array();
                         if (question.answers.length > 0)
@@ -135,7 +138,8 @@
         stylesheet: 'stacktack.css',
         answerLimit: 0,
         onlyShowAcceptedAnswer: false,
-        filterAnswers: []
+        filterAnswers: [],
+        showTags: true
     };
 
 })(jQuery);
