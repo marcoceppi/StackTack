@@ -150,10 +150,14 @@ h1, h2, h3, h4, h5, h6
     font-size: 1.2em;
 }
 
-.stacktack-answer-accepted h4
+.stacktack-answer-accepted h4 a, .stacktack-answer-accepted h4 a:link, .stacktack-answer-accepted h4 a:visited
 {
-    color: #00CC00;
-    font-size: 1.4em;
+    color: #5B9058;
+}
+
+.stacktack-answer-accepted h4 a:hover
+{
+    color: #94BC92;
 }
 
 a.stacktack-answers-more
