@@ -70,12 +70,13 @@
                                 }
                                 isFiltered = true;
                             }
-                            else if (filterAnswers.length > 0)
+                            else if (options.filterAnswers.length > 0)
                             {
                                 isFiltered = true;
                             }
-                            else if (answerLimit > 0)
+                            else if (options.answerLimit > 0)
                             {
+                                answers = question.answers.slice(0, options.answerLimit);
                                 isFiltered = true;
                             }
                         }
