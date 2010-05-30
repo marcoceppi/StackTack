@@ -14,7 +14,7 @@
         
         function createProfile(user)
         {
-            return '<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + user.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + user.display_name + '<br/>' + user.reputation + 'reputation</div>'
+            return '<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + user.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" /><a href="http://www.' + options.site + '/users/' + user.user_id  + '" target="_blank">' + user.display_name + '</a><br/>' + user.reputation + 'reputation</div>'
         }
         
         return this.each(function() {
@@ -55,7 +55,7 @@
                         for (var i = 0; i < question.answers.length; i++)
                         {
                             var answer = question.answers[i];
-                            var answerElement = $('<div class="stacktack-answer"> <div class="stacktack-answer-header clearfix"><div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + answer.owner.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + answer.owner.display_name + '<br/>' + answer.owner.reputation + '</div> <h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
+                            var answerElement = $('<div class="stacktack-answer"> <div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
                             answersElement.append(answerElement);
                             if (answer.accepted)
                             {
