@@ -5,10 +5,16 @@
         if (options.stylesheet)
         {
             // only include the stylesheet once
-            if ($('link[title=stacktack]'))
+            if ($('link[href=' + options.stylesheet + ']').length == 0)
             {
-                var link = $('<link type="text/css" rel="stylesheet" href="' + options.stylesheet + '" title="stacktack">');
-                $('head').append(link);
+                if (document.createStyleSheet)
+                {
+                    document.createStyleSheet('stacktack.css');
+                }
+                else
+                {
+                    $('<link rel="stylesheet" type="text/css" href="' + options.stylesheet + '" />').appendTo('head'); 
+                }
             }
         }
         
