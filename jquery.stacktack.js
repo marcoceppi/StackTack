@@ -1,11 +1,11 @@
 (function($) {
-    $.fn.stacktack = function(options) {
-        var options = $.extend($.fn.stacktack.defaults, options);
+    $.fn.stacktack = function(opts) {
+        var options = $.extend($.fn.stacktack.defaults, opts);
         
         if (options.stylesheet)
         {
             // only include the stylesheet once
-            if ($('link[href=' + options.stylesheet + ']').length == 0)
+            if ($('link[href=' + options.stylesheet + ']').length === 0)
             {
                 // necessary for IE to dynamically load stylesheet
                 if (document.createStyleSheet)
@@ -21,7 +21,7 @@
         
         function createProfile(user)
         {
-            return '<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + user.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" /><a href="http://www.' + options.site + '/users/' + user.user_id  + '" target="_blank">' + user.display_name + '</a><br/>' + user.reputation + '</div>'
+            return '<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + user.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" /><a href="http://www.' + options.site + '/users/' + user.user_id  + '" target="_blank">' + user.display_name + '</a><br/>' + user.reputation + '</div>';
         }
         
         return this.each(function() {
@@ -65,7 +65,7 @@
                         contentElement.append(answersElement);
 
                         // filter the answers
-                        var visibleAnswers = new Array();
+                        var visibleAnswers = [];
                         if (question.answers.length > 0)
                         {
                             if (options.onlyShowAcceptedAnswer)
