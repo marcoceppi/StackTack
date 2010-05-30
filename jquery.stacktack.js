@@ -33,6 +33,7 @@
                     url: 'http://api.' + options.site + '/' + options.apiVersion + '/questions/' + questionId[0] + '?jsonp=?',
                     success: function(data) {
                         var question = data.questions[0];
+
                         var containerElement = $('<div class="stacktack-container"></div>');
                         item.append(containerElement);
                         
@@ -53,6 +54,7 @@
                         var answersElement = $('<div class="stacktack-answers"></div>');
                         contentElement.append(answersElement);
                         
+                        // filter the answers
                         var answers = question.answers;
                         // determines if the "more answers" button should be displayed
                         var isFiltered = false;
@@ -89,6 +91,7 @@
                             }
                         }
                         
+                        // render the answers
                         for (var i = 0; i < answers.length; i++)
                         {
                             var answer = answers[i];
@@ -99,8 +102,11 @@
                                 answerElement.addClass('stacktack-answer-accepted');
                             }
                         }
+                        
                         // make all links open in a new window
                         containerElement.find('a').attr('target', '_blank');
+                        
+                        
                     }
                 });
             });
