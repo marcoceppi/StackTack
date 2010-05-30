@@ -55,10 +55,8 @@
                         contentElement.append(answersElement);
                         
                         // filter the answers
-                        var answers = question.answers;
-                        // determines if the "more answers" button should be displayed
-                        var isFiltered = false;
-                        if (answers.length > 0)
+                        var visibleAnswers = new Array();
+                        if (question.answers.length > 0)
                         {
                             if (options.onlyShowAcceptedAnswer)
                             {
@@ -66,47 +64,60 @@
                                 {
                                     if (question.answers[i].accepted)
                                     {
-                                        answers = [question.answers[i]];
-                                        break;
+                                        visibleAnswers.push(i);
                                     }
                                 }
-                                isFiltered = true;
                             }
                             else if (options.filterAnswers.length > 0)
                             {
-                                answers = new Array();
                                 for (var i = 0; i < question.answers.length; i++)
                                 {
                                     if ($.inArray(question.answers[i].answer_id, options.filterAnswers) > -1)
                                     {
-                                        answers.push(question.answers[i]);
+                                        visibleAnswers.push(i);
                                     }
                                 }
-                                isFiltered = true;
                             }
                             else if (options.answerLimit > 0)
                             {
-                                answers = question.answers.slice(0, options.answerLimit);
-                                isFiltered = true;
+                                for (var i = 0; i < options.answerLimit; i++)
+                                {
+                                    visibleAnswers.push(i);
+                                }
                             }
                         }
                         
                         // render the answers
-                        for (var i = 0; i < answers.length; i++)
+                        for (var i = 0; i < question.answers.length; i++)
                         {
-                            var answer = answers[i];
-                            var answerElement = $('<div class="stacktack-answer"> <div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
-                            answersElement.append(answerElement);
+                            var answer = question.answers[i];
+                            var answerElement = $('<div class="stacktack-answer"><div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
                             if (answer.accepted)
                             {
                                 answerElement.addClass('stacktack-answer-accepted');
                             }
+                            // hide answer if it isn't in the visible list
+                            if ($.inArray(i, visibleAnswers) == -1)
+                            {
+                                answerElement.hide();
+                            }
+                            answersElement.append(answerElement);
                         }
                         
                         // make all links open in a new window
                         containerElement.find('a').attr('target', '_blank');
                         
-                        
+                        // render "more answers" button if the answers were filtered at all
+                        if (visibleAnswers.length > 0)
+                        {
+                            var moreElement = $('<a href="#" class="stacktack-answers-more>+ More Answers</div>"');
+                            moreElement.click(function() {
+                                $(this).hide();
+                                answersElement.find('.stacktack-answer:hidden').slideDown('fast');
+                                return false;
+                            });
+                            answersElement.append(moreElement);
+                        }
                     }
                 });
             });

@@ -161,6 +161,17 @@ h1, h2, h3, h4, h5, h6
     color: #999999;
 }
 
+a.stacktack-answers-more
+{
+    display: block;
+    padding-top: 0.4em;
+    
+    border-top: solid 1px #DDDDDD;
+    font-size: 1.1em;
+    text-align: right;
+    font-weight: bold;
+}
+
 * + .margin-medium
 {
     margin-top: 1em;
