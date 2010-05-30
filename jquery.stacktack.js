@@ -34,8 +34,8 @@
                     success: function(data) {
                         var question = data.questions[0];
 
+                        // appended as last step
                         var containerElement = $('<div class="stacktack-container"></div>');
-                        item.append(containerElement);
                         
                         var contentElement = $('<div class="stacktack-content"><img src="logo.png" alt="StackTack" class="stacktack-logo" /></div>');
                         containerElement.append(contentElement);
@@ -86,7 +86,7 @@
                                 }
                             }
                         }
-                        
+
                         // render the answers
                         for (var i = 0; i < question.answers.length; i++)
                         {
@@ -118,6 +118,8 @@
                             });
                             answersElement.append(moreElement);
                         }
+                        
+                        item.append(containerElement);
                     }
                 });
             });
