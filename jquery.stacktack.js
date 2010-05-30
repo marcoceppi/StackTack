@@ -91,7 +91,14 @@
                         for (var i = 0; i < question.answers.length; i++)
                         {
                             var answer = question.answers[i];
-                            var answerElement = $('<div class="stacktack-answer"><div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
+                            
+                            var answerTitle = 'Answer ' + (i + 1);
+                            if (answer.accepted)
+                            {
+                                answerTitle += ' (Accepted)';
+                            }
+                            
+                            var answerElement = $('<div class="stacktack-answer"><div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">' + answerTitle + '</a></h4></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
                             if (answer.accepted)
                             {
                                 answerElement.addClass('stacktack-answer-accepted');
