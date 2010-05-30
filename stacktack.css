@@ -150,14 +150,25 @@ h1, h2, h3, h4, h5, h6
     font-size: 1.2em;
 }
 
-.stacktack-answer-accepted h4 a, .stacktack-answer-accepted h4 a:link, .stacktack-answer-accepted h4 a:visited
+.stacktack-answer-accepted .stacktack-answer-header h4
 {
-    color: #5B9058;
+    font-size: 1.5em;
 }
 
-.stacktack-answer-accepted h4 a:hover
+.stacktack-answer-accepted .stacktack-answer-header h4 a, .stacktack-answer-accepted .stacktack-answer-header h4 a:link, .stacktack-answer-accepted .stacktack-answer-header h4 a:visited
+{
+    color: #5B9058;
+    vertical-align: top;
+}
+
+.stacktack-answer-accepted .stacktack-answer-header h4 a:hover
 {
     color: #94BC92;
+}
+
+.stacktack-answer-check
+{
+    margin-right: 5px;
 }
 
 a.stacktack-answers-more

@@ -92,16 +92,12 @@
                         {
                             var answer = question.answers[i];
                             
-                            var answerTitle = 'Answer ' + (i + 1);
-                            if (answer.accepted)
-                            {
-                                answerTitle += ' (Accepted)';
-                            }
-                            
-                            var answerElement = $('<div class="stacktack-answer"><div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">' + answerTitle + '</a></h4><div class="stacktack-votes">' + answer.score + ' Votes</div></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
+                            var answerElement = $('<div class="stacktack-answer"><div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4><div class="stacktack-votes">' + answer.score + ' Votes</div></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
                             if (answer.accepted)
                             {
                                 answerElement.addClass('stacktack-answer-accepted');
+                                answerElement.find('.stacktack-answer-header h4').prepend('<img src="check.png" alt="Accepted" title="Accepted" class="stacktack-answer-check" />');
+                                answerElement.find('.stacktack-votes').append(' | Accepted');
                             }
                             // hide answer if it isn't in the visible list
                             if ($.inArray(i, visibleAnswers) == -1)
