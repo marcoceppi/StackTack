@@ -24,17 +24,6 @@ html[xmlns] .clearfix
 	height: 1%;
 }
 
-.stacktack-container a, .stacktack-container a:link, .stacktack-container a:visited
-{
-    color: #588FC7;
-    text-decoration: none;
-}
-
-.stacktack-container a:hover
-{
-    color: #8CB3D9;
-}
-
 .stacktack-container
 {
     padding: 10px 10px 0 10px;
@@ -49,6 +38,22 @@ h1, h2, h3, h4, h5, h6
 {
     font-family: "Trebuchet MS";
     color: #588FC7;
+}
+
+.stacktack-container a, .stacktack-container a:link, .stacktack-container a:visited
+{
+    color: #588FC7;
+    text-decoration: none;
+}
+
+.stacktack-container a:hover
+{
+    color: #8CB3D9;
+}
+
+.stacktack-container img
+{
+    border: 0;
 }
 
 .stacktack-container pre

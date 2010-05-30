@@ -37,7 +37,7 @@
                         // appended as last step
                         var containerElement = $('<div class="stacktack-container"></div>');
                         
-                        var contentElement = $('<div class="stacktack-content"><img src="logo.png" alt="StackTack" class="stacktack-logo" /></div>');
+                        var contentElement = $('<div class="stacktack-content"><a href="http://www.stacktack.com/" target="_blank" title="StackTack"><img src="logo.png" alt="StackTack" title="StackTack" class="stacktack-logo" /></a></div>');
                         containerElement.append(contentElement);
 
                         var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix">' + createProfile(question.owner) + '<h3><a href="http://www.' + options.site + '/questions/' + question.question_id + '" target="_blank">' + question.title + '</a></h3><div class="stacktack-votes">' + question.score + ' Votes</div></div><div class="stacktack-question-body">' + question.body + '</div></div>');
