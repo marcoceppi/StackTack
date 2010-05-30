@@ -47,6 +47,7 @@ html[xmlns] .clearfix
 
 h1, h2, h3, h4, h5, h6
 {
+    font-family: "Trebuchet MS";
     color: #588FC7;
 }
 
@@ -132,6 +133,7 @@ h1, h2, h3, h4, h5, h6
 .stacktack-answer h4
 {
     margin: 0;
+
     font-size: 1.2em;
 }
 
