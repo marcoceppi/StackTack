@@ -7,6 +7,7 @@
             // only include the stylesheet once
             if ($('link[href=' + options.stylesheet + ']').length == 0)
             {
+                // necessary for IE to dynamically load stylesheet
                 if (document.createStyleSheet)
                 {
                     document.createStyleSheet('stacktack.css');
