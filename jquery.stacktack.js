@@ -19,7 +19,7 @@
         
         return this.each(function() {
             var $this = $(this);
-            $this.filter('id^=something').add($this.find('[id^=stacktack]')).each(function(index, value) {
+            $this.filter('[id^=stacktack]').add($this.find('[id^=stacktack]')).each(function(index, value) {
                 var item = $(value);
                 var questionId = /\d+$/.exec(value.id);
 
