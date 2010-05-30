@@ -12,6 +12,11 @@
             }
         }
         
+        function createProfile(user)
+        {
+            return '<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + user.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + user.display_name + '<br/>' + user.reputation + 'reputation</div>'
+        }
+        
         return this.each(function() {
             var $this = $(this);
             $this.filter('id^=something').add($this.find('[id^=stacktack]')).each(function(index, value) {
@@ -34,7 +39,7 @@
                         var contentElement = $('<div class="stacktack-content"><img src="logo.png" alt="StackTack" class="stacktack-logo" /></div>');
                         containerElement.append(contentElement);
 
-                        var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix"><div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + question.owner.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" />' + question.owner.display_name + '<br/>' + question.owner.reputation + '</div> <h3><a href="http://www.' + options.site + '/questions/' + question.question_id + '" target="_blank">' + question.title + '</a></h3></div><div class="stacktack-question-body">' + question.body + '</div></div>');
+                        var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix">' + createProfile(question.owner) + '<h3><a href="http://www.' + options.site + '/questions/' + question.question_id + '" target="_blank">' + question.title + '</a></h3></div><div class="stacktack-question-body">' + question.body + '</div></div>');
                         contentElement.append(questionElement);
 
                         var tagsElement = $('<ul class="stacktack-tags"></ul>');
