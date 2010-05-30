@@ -72,6 +72,14 @@
                             }
                             else if (options.filterAnswers.length > 0)
                             {
+                                answers = new Array();
+                                for (var i = 0; i < question.answers.length; i++)
+                                {
+                                    if ($.inArray(question.answers[i].answer_id, options.filterAnswers) > -1)
+                                    {
+                                        answers.push(question.answers[i]);
+                                    }
+                                }
                                 isFiltered = true;
                             }
                             else if (options.answerLimit > 0)
