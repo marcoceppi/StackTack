@@ -57,12 +57,12 @@ h1, h2, h3, h4, h5, h6
     padding: 10px;
     overflow: auto;
 
-    background: #DDDDDD;
+    background: #EEEEEE;
 }
 
 .stacktack-container code
 {
-    background: #DDDDDD;
+    background: #EEEEEE;
     font-size: 0.9em;
 }
 
@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6
     margin: 0px;
     overflow: auto;
 
-    background: #DDDDDD;
+    background: #EEEEEE;
 }
 
 .stacktack-question
@@ -123,10 +123,18 @@ h1, h2, h3, h4, h5, h6
     margin-right: 0.4em;
 }
 
+.stacktack-answers
+{
+    border-top: solid 1px #DDDDDD;
+}
+
 .stacktack-answer
 {
     padding-top: 0.8em;
-    
+}
+
+.stacktack-answer + .stacktack-answer
+{
     border-top: dotted 1px #CCCCCC;
 }
 
@@ -141,6 +149,17 @@ h1, h2, h3, h4, h5, h6
 {
     color: #00CC00;
     font-size: 1.4em;
+}
+
+a.stacktack-answers-more
+{
+    display: block;
+    padding-top: 0.4em;
+    
+    border-top: solid 1px #DDDDDD;
+    font-size: 1.1em;
+    text-align: right;
+    font-weight: bold;
 }
 
 .stacktack-tags
@@ -159,17 +178,6 @@ h1, h2, h3, h4, h5, h6
     background: #DDDDDD;
     list-style: none inside;
     color: #999999;
-}
-
-a.stacktack-answers-more
-{
-    display: block;
-    padding-top: 0.4em;
-    
-    border-top: solid 1px #DDDDDD;
-    font-size: 1.1em;
-    text-align: right;
-    font-weight: bold;
 }
 
 * + .margin-medium
