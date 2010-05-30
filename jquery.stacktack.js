@@ -52,9 +52,37 @@
 
                         var answersElement = $('<div class="stacktack-answers"></div>');
                         contentElement.append(answersElement);
-                        for (var i = 0; i < question.answers.length; i++)
+                        
+                        var answers = question.answers;
+                        // determines if the "more answers" button should be displayed
+                        var isFiltered = false;
+                        if (answers.length > 0)
                         {
-                            var answer = question.answers[i];
+                            if (options.onlyShowAcceptedAnswer)
+                            {
+                                for (var i = 0; i < question.answers.length; i++)
+                                {
+                                    if (question.answers[i].accepted)
+                                    {
+                                        answers = [question.answers[i]];
+                                        break;
+                                    }
+                                }
+                                isFiltered = true;
+                            }
+                            else if (filterAnswers.length > 0)
+                            {
+                                isFiltered = true;
+                            }
+                            else if (answerLimit > 0)
+                            {
+                                isFiltered = true;
+                            }
+                        }
+                        
+                        for (var i = 0; i < answers.length; i++)
+                        {
+                            var answer = answers[i];
                             var answerElement = $('<div class="stacktack-answer"> <div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
                             answersElement.append(answerElement);
                             if (answer.accepted)
@@ -73,7 +101,10 @@
     $.fn.stacktack.defaults = {
         site: 'stackoverflow.com',
         apiVersion: 0.8,
-        stylesheet: 'stacktack.css'
+        stylesheet: 'stacktack.css',
+        answerLimit: 0,
+        onlyShowAcceptedAnswer: false,
+        filterAnswers: []
     };
 
 })(jQuery);
