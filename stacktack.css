@@ -184,13 +184,15 @@ a.stacktack-answers-more
 .stacktack-tags
 {
     padding: 0px;
+    
+    text-align: right;
 }
 
 .stacktack-tags li
 {
     display: inline;
     padding: 0.2em 0.4em;
-    margin-right: 0.5em;
+    margin-left: 0.5em;
     
     border-right: solid 1px #CCCCCC;
     border-bottom: solid 1px #CCCCCC;
