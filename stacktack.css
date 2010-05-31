@@ -180,7 +180,13 @@ h1, h2, h3, h4, h5, h6
 
 .stacktack-answer-check
 {
+    float: left;
+    display: inline;
+    width: 20px;
+    height: 21px;
     margin-right: 5px;
+    
+    background: transparent url(sprites.png) -10px -70px no-repeat;
 }
 
 a.stacktack-answers-more

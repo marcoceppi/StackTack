@@ -33,7 +33,7 @@
                 // appended as last step
                 var containerElement = $('<div class="stacktack-container"></div>');
                 
-                var contentElement = $('<div class="stacktack-content"><a href="http://www.stacktack.com/" target="_blank" title="StackTack" class="stacktack-logo"><h1>StackTack</h1></a></div>');
+                var contentElement = $('<div class="stacktack-content"><a href="http://www.stacktack.com/" target="_blank" title="StackTack" class="stacktack-logo"><h2>StackTack</h2></a></div>');
                 containerElement.append(contentElement);
 
                 $.ajax({
@@ -106,7 +106,7 @@
                             if (answer.accepted)
                             {
                                 answerElement.addClass('stacktack-answer-accepted');
-                                answerElement.find('.stacktack-answer-header h4').prepend('<img src="check.png" alt="Accepted" title="Accepted" class="stacktack-answer-check" />');
+                                answerElement.find('.stacktack-answer-header h4').prepend('<span alt="Accepted" title="Accepted" class="stacktack-answer-check"></span>');
                                 answerElement.find('.stacktack-votes').append(' | Accepted');
                             }
                             // hide answer if it isn't in the visible list
