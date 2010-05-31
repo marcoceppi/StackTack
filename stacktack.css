@@ -33,7 +33,7 @@ html[xmlns] .clearfix
     background: transparent url(sprites.png) 0px -108px no-repeat;
 }
 
-h1, h2, h3, h4, h5, h6
+.stacktack-container h1, .stacktack-container h2, .stacktack-container h3, .stacktack-container h4
 {
     font-family: "Trebuchet MS";
     color: #588FC7;
