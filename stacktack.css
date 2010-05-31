@@ -30,7 +30,7 @@ html[xmlns] .clearfix
     
     font-family: Arial, Helvetica, san-serif;
     font-size: 13px;
-    background: transparent url(corner.png) top left no-repeat;
+    background: transparent url(sprites.png) 0px -108px no-repeat;
 }
 
 h1, h2, h3, h4, h5, h6
