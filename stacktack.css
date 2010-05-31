@@ -106,9 +106,16 @@ h1, h2, h3, h4, h5, h6
 
 .stacktack-logo
 {
+    display: block;
     position: absolute;
     top: -8px;
     left: 10px;
+    width: 145px;
+    height: 36px;
+    text-indent: -9000px;
+    overflow: hidden;
+    
+    background: transparent url(sprites.png) -10px -10px no-repeat;
 }
 
 .stacktack-profile
