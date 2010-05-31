@@ -123,7 +123,7 @@
                         // render "more answers" button if the answers were filtered at all
                         if (visibleAnswers.length > 0)
                         {
-                            var moreElement = $('<a href="#" class="stacktack-answers-more>+ More Answers</div>"');
+                            var moreElement = $('<a href="#" class="stacktack-answers-more">+ More Answers</a>"');
                             moreElement.click(function() {
                                 $(this).hide();
                                 answersElement.find('.stacktack-answer:hidden').slideDown('fast');
