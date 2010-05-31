@@ -27,7 +27,6 @@ html[xmlns] .clearfix
 .stacktack-container
 {
     padding: 10px 10px 0 10px;
-    min-height: 140px;
     
     font-family: Arial, Helvetica, san-serif;
     font-size: 13px;
@@ -100,6 +99,7 @@ h1, h2, h3, h4, h5, h6
 {
     position: relative;
     padding: 30px 20px 10px 20px;
+    min-height: 140px;
 
     background: #FFFFFF;
 }
