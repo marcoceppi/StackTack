@@ -39,7 +39,6 @@
                 $.ajax({
                     dataType: 'jsonp',
                     data: {
-                        'type': 'jsontext',
                         'apikey':'kz4oNmbazUGoJIUyUbSaLg',
                         'body': 'true'
                     },
