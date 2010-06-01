@@ -218,8 +218,3 @@ a.stacktack-answers-more
     list-style: none inside;
     color: #999999;
 }
-
-* + .margin-medium
-{
-    margin-top: 1em;
-}
