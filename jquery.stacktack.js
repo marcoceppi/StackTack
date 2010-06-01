@@ -32,22 +32,43 @@
                 var item = $(value);
                 var questionId = /\d+$/.exec(value.id);
 
-                var itemOptions = $.extend({}, options);
                 // parse override options from classes
+                var itemOptions = $.extend({}, options);
                 if (item.attr('class').length)
                 {
                     classes = item.attr('class').split(' ');
                     for (var i = 0; i < classes.length; i++)
                     {
                         // replace percent with %
-                        clas = classes[i].replace(/percent/i, '%');
+                        clas = classes[i];
                         classTokens = clas.split('-');
                         // if there was a split
                         if (classTokens.length > 1)
                         {
+                            // convert special strings
+                            for (var j = 0; j < classTokens.length; j++)
+                            {
+                                classTokenName = classTokens[j].toLowerCase();
+                                classTokens[j] = classTokenName.replace(/percent/i, '%');
+                                if (classTokenName == 'true' || classTokenName == 'false')
+                                {
+                                    classTokens[j] == Boolean(classTokenName);
+                                }
+                            }
+                            
                             if (optionKeys.indexOf(classTokens[0].toLowerCase()) > -1)
                             {
-                                console.log(classTokens[0]);
+                                // it's a list
+                                if (classTokens.length > 2)
+                                {
+                                    itemOptions[classTokens[0]] = classTokens.slice(1);
+                                }
+                                // it's a single value
+                                else
+                                {
+                                    itemOptions[classTokens[0]] = classTokens[1];
+                                }
+                                console.log(itemOptions);
                             }
                         }
                     }
@@ -55,9 +76,9 @@
 
                 // appended as last step
                 var containerElement = $('<div class="stacktack-container"></div>');
-                if (options.width)
+                if (itemOptions.width)
                 {
-                    containerElement.css('width', options.width);
+                    containerElement.css('width', itemOptions.width);
                 }
                 
                 var contentElement = $('<div class="stacktack-content"><a href="http://www.stacktack.com/" target="_blank" title="StackTack" class="stacktack-logo"><h2>StackTack</h2></a></div>');
@@ -80,7 +101,7 @@
                         var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix">' + createProfile(question.owner) + '<h3><a href="http://www.' + options.site + '/questions/' + question.question_id + '" target="_blank">' + question.title + '</a></h3><div class="stacktack-votes">' + question.score + ' Votes</div></div><div class="stacktack-question-body">' + question.body + '</div></div>');
                         contentElement.append(questionElement);
 
-                        if (options.showTags)
+                        if (itemOptions.showTags)
                         {
                             var tagsElement = $('<ul class="stacktack-tags"></ul>');
                             for (var i = 0; i < question.tags.length; i++)
@@ -98,7 +119,7 @@
                         var visibleAnswers = [];
                         if (question.answers.length > 0)
                         {
-                            if (options.onlyShowAcceptedAnswer)
+                            if (itemOptions.onlyShowAcceptedAnswer)
                             {
                                 for (var i = 0; i < question.answers.length; i++)
                                 {
@@ -108,19 +129,19 @@
                                     }
                                 }
                             }
-                            else if (options.filterAnswers.length > 0)
+                            else if (itemOptions.filterAnswers.length > 0)
                             {
                                 for (var i = 0; i < question.answers.length; i++)
                                 {
-                                    if ($.inArray(question.answers[i].answer_id, options.filterAnswers) > -1)
+                                    if ($.inArray(question.answers[i].answer_id, itemOptions.filterAnswers) > -1)
                                     {
                                         visibleAnswers.push(i);
                                     }
                                 }
                             }
-                            else if (options.answerLimit > 0)
+                            else if (itemOptions.answerLimit > 0)
                             {
-                                for (var i = 0; i < options.answerLimit; i++)
+                                for (var i = 0; i < itemOptions.answerLimit; i++)
                                 {
                                     visibleAnswers.push(i);
                                 }
