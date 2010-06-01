@@ -30,6 +30,8 @@
                 var item = $(value);
                 var questionId = /\d+$/.exec(value.id);
 
+                // 
+
                 // appended as last step
                 var containerElement = $('<div class="stacktack-container"></div>');
                 if (options.width)
@@ -39,6 +41,8 @@
                 
                 var contentElement = $('<div class="stacktack-content"><a href="http://www.stacktack.com/" target="_blank" title="StackTack" class="stacktack-logo"><h2>StackTack</h2></a></div>');
                 containerElement.append(contentElement);
+                var loadingElement = $('<p class="stacktack-loading">Loading Question ID ' + questionId + '</p>');
+                contentElement.append(loadingElement);
 
                 $.ajax({
                     dataType: 'jsonp',
@@ -48,6 +52,8 @@
                     },
                     url: 'http://api.' + options.site + '/' + options.apiVersion + '/questions/' + questionId[0] + '?jsonp=?',
                     success: function(data) {
+                        loadingElement.remove();
+                        
                         var question = data.questions[0];
 
                         var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix">' + createProfile(question.owner) + '<h3><a href="http://www.' + options.site + '/questions/' + question.question_id + '" target="_blank">' + question.title + '</a></h3><div class="stacktack-votes">' + question.score + ' Votes</div></div><div class="stacktack-question-body">' + question.body + '</div></div>');

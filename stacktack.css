@@ -90,6 +90,11 @@ html[xmlns] .clearfix
     background: #FFFFFF;
 }
 
+.stacktack-loading
+{
+    color: #AAAAAA;
+}
+
 .stacktack-question
 {
     margin-top: 0.8em;
