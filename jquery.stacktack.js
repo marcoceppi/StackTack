@@ -45,17 +45,21 @@
                         // if there was a split
                         if (classTokens.length > 1)
                         {
-                            // convert special strings
-                            for (var j = 0; j < classTokens.length; j++)
+                            // convert special value strings
+                            for (var j = 1; j < classTokens.length; j++)
                             {
-                                classTokenName = classTokens[j].toLowerCase();
-                                classTokens[j] = classTokenName.replace(/percent/i, '%');
-                                if (classTokenName == 'true' || classTokenName == 'false')
+                                classToken = classTokens[j].toLowerCase();
+                                // replace booleans
+                                if (classToken == 'true' || classToken == 'false')
                                 {
-                                    classTokens[j] == Boolean(classTokenName);
+                                    classTokens[j] == Boolean(classToken);
+                                    continue;
                                 }
+                                // replace percentages since they % is not a valid class name character
+                                classTokens[j] = classToken.replace(/percent/i, '%');
                             }
                             
+                            // if the first token of the class is an override option
                             if (optionKeys.indexOf(classTokens[0].toLowerCase()) > -1)
                             {
                                 // it's a list
@@ -68,7 +72,6 @@
                                 {
                                     itemOptions[classTokens[0]] = classTokens[1];
                                 }
-                                console.log(itemOptions);
                             }
                         }
                     }
@@ -133,7 +136,7 @@
                             {
                                 for (var i = 0; i < question.answers.length; i++)
                                 {
-                                    if ($.inArray(question.answers[i].answer_id, itemOptions.filterAnswers) > -1)
+                                    if ($.inArray(question.answers[i].answer_id.toString(), itemOptions.filterAnswers) > -1)
                                     {
                                         visibleAnswers.push(i);
                                     }
