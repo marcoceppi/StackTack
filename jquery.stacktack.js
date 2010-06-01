@@ -50,7 +50,7 @@
                             {
                                 classToken = classTokens[j].toLowerCase();
                                 // replace booleans
-                                if (classToken == 'true' || classToken == 'false')
+                                if (classToken === 'true' || classToken === 'false')
                                 {
                                     classTokens[j] == Boolean(classToken);
                                     continue;
