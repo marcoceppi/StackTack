@@ -1,6 +1,8 @@
 (function($) {
     $.fn.stacktack = function(opts) {
         var options = $.extend($.fn.stacktack.defaults, opts);
+        // a list of options suitable for per-item overrides, lowercase for comparison
+        var optionKeys = ['width', 'onlyshowacceptedanswer', 'answerlimit', 'filteranswers', 'showtags'];
         
         if (options.stylesheet)
         {
@@ -30,7 +32,26 @@
                 var item = $(value);
                 var questionId = /\d+$/.exec(value.id);
 
-                // 
+                var itemOptions = $.extend({}, options);
+                // parse override options from classes
+                if (item.attr('class').length)
+                {
+                    classes = item.attr('class').split(' ');
+                    for (var i = 0; i < classes.length; i++)
+                    {
+                        // replace percent with %
+                        clas = classes[i].replace(/percent/i, '%');
+                        classTokens = clas.split('-');
+                        // if there was a split
+                        if (classTokens.length > 1)
+                        {
+                            if (optionKeys.indexOf(classTokens[0].toLowerCase()) > -1)
+                            {
+                                console.log(classTokens[0]);
+                            }
+                        }
+                    }
+                }
 
                 // appended as last step
                 var containerElement = $('<div class="stacktack-container"></div>');
