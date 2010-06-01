@@ -80,6 +80,16 @@ html[xmlns] .clearfix
     background: #EEEEEE;
 }
 
+.stacktack-content
+{
+    position: relative;
+    padding: 30px 20px 10px 20px;
+    min-height: 140px;
+
+    border: solid 1px #DDDDDD;
+    background: #FFFFFF;
+}
+
 .stacktack-question
 {
     margin-top: 0.8em;
@@ -93,15 +103,6 @@ html[xmlns] .clearfix
     margin: 0;
 
     font-size: 1.5em;
-}
-
-.stacktack-content
-{
-    position: relative;
-    padding: 30px 20px 10px 20px;
-    min-height: 140px;
-
-    background: #FFFFFF;
 }
 
 .stacktack-logo
