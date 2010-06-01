@@ -32,6 +32,10 @@
 
                 // appended as last step
                 var containerElement = $('<div class="stacktack-container"></div>');
+                if (options.width)
+                {
+                    containerElement.css('width', options.width);
+                }
                 
                 var contentElement = $('<div class="stacktack-content"><a href="http://www.stacktack.com/" target="_blank" title="StackTack" class="stacktack-logo"><h2>StackTack</h2></a></div>');
                 containerElement.append(contentElement);
@@ -145,7 +149,8 @@
         answerLimit: 0,
         onlyShowAcceptedAnswer: false,
         filterAnswers: [],
-        showTags: true
+        showTags: true,
+        width: null
     };
 
 })(jQuery);
