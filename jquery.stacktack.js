@@ -113,9 +113,12 @@
                                 answerElement.find('.stacktack-votes').append(' | Accepted');
                             }
                             // hide answer if it isn't in the visible list
-                            if ($.inArray(i, visibleAnswers) == -1)
+                            if (visibleAnswers.length > 0)
                             {
-                                answerElement.hide();
+                                if ($.inArray(i, visibleAnswers) == -1)
+                                {
+                                    answerElement.hide();
+                                }
                             }
                             answersElement.append(answerElement);
                         }
