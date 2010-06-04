@@ -12,7 +12,7 @@
                 // necessary for IE to dynamically load stylesheet
                 if (document.createStyleSheet)
                 {
-                    document.createStyleSheet('http://app.stacktack.com/stacktack.min.css');
+                    document.createStyleSheet(options.stylesheet);
                 }
                 else
                 {
@@ -198,8 +198,8 @@
 
     $.fn.stacktack.defaults = {
         site: 'stackoverflow.com',
-        apiVersion: 0.8,
-        stylesheet: 'stacktack.css',
+        apiVersion: '0.8',
+        stylesheet: 'http://app.stacktack.com/stacktack.min.css',
         answerLimit: 0,
         onlyShowAcceptedAnswer: false,
         filterAnswers: [],
