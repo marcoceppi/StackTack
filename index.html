@@ -11,15 +11,10 @@
                 
                 background: #E6E3D9;
             }
-            
-            #stacktack-518021
-            {
-                width: 600px;
-            }
         </style>
         
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script type="text/javascript" src="jquery.stacktack.js"></script>
+        <script type="text/javascript" src="http://app.stacktack.com/jquery.stacktack.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $(document).stacktack({width: '900px'});
@@ -29,9 +24,11 @@
     
     <body>
         <h1>StackTack Demo</h1>
-        <p>Below is a <a href="http://www.stackoverflow.com/questions/2893858" target="_blank">StackOverflow question</a> that has been dynamically loaded from the StackApps API (Application Programming Interface) via StackTack.</p>
+        <p>Below is a <a href="http://www.stackoverflow.com/questions/518021" target="_blank">StackOverflow question</a> that has been dynamically loaded from the StackApps API (Application Programming Interface) via <a href="https://bitbucket.org/zamtools/stacktack/wiki/Home" target="_blank">StackTack</a>. Only two of its answers are being displayed initially because an answer filter is being used.</p>
         
         <div id="stacktack-518021" class="margin-medium width-600px filterAnswers-518038-518053"></div>
+        
+        <p>This question has a different width and is only displaying its accepted answer by using per-question overrides.</p>
         <div id="stacktack-1227286" class="margin-medium width-900px onlyShowAcceptedAnswer-true"></div>
     </body>
 </html>
