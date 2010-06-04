@@ -12,7 +12,7 @@
                 // necessary for IE to dynamically load stylesheet
                 if (document.createStyleSheet)
                 {
-                    document.createStyleSheet('stacktack.css');
+                    document.createStyleSheet('http://app.stacktack.com/stacktack.min.css');
                 }
                 else
                 {
