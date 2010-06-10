@@ -93,6 +93,7 @@
                     dataType: 'jsonp',
                     data: {
                         'apikey':'kz4oNmbazUGoJIUyUbSaLg',
+                        'answers': 'true',
                         'body': 'true'
                     },
                     url: 'http://api.' + options.site + '/' + options.apiVersion + '/questions/' + questionId[0] + '?jsonp=?',
