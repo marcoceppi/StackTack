@@ -199,7 +199,7 @@
 
     $.fn.stacktack.defaults = {
         site: 'stackoverflow.com',
-        apiVersion: '1.0',
+        apiVersion: '0.8',
         stylesheet: 'http://app.stacktack.com/stacktack.min.css',
         answerLimit: 0,
         onlyShowAcceptedAnswer: false,
