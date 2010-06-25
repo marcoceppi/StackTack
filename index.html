@@ -14,10 +14,13 @@
         </style>
         
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-        <script type="text/javascript" src="http://app.stacktack.com/jquery.stacktack.min.js"></script>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.2/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="jquery.stacktack.min.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
                 $(document).stacktack({width: '900px'});
+                
+                $(".modal-dialog").dialog({'width': 600});
             });
         </script>
     </head>
@@ -30,5 +33,8 @@
         
         <p>This question is using the default width and is only displaying its accepted answer using a per-question override.</p>
         <div id="stacktack-1227286" class="onlyShowAcceptedAnswer-true"></div>
+
+        <p>This question is in a JQueryUI modal dialog.  It currently has no theme, but can be closed and dragged around the browser window.</p>
+        <div id="stacktack-1701543" class="width-100percent onlyShowAcceptedAnswer-true modal-dialog"></div>
     </body>
 </html>
