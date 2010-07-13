@@ -30,6 +30,7 @@ html[xmlns] .clearfix
     
     font-family: Arial, Helvetica, san-serif;
     font-size: 13px;
+    line-height: 16px;
     background: transparent url(sprites.png) 0px -108px no-repeat;
 }
 

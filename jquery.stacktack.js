@@ -197,10 +197,12 @@
         });
     };
 
+//        stylesheet: 'http://app.stacktack.com/stacktack.min.css',
+
     $.fn.stacktack.defaults = {
         site: 'stackoverflow.com',
         apiVersion: '1.0',
-        stylesheet: 'http://app.stacktack.com/stacktack.min.css',
+        stylesheet: 'stacktack.css',
         answerLimit: 0,
         onlyShowAcceptedAnswer: false,
         filterAnswers: [],
