@@ -36,6 +36,8 @@ html[xmlns] .clearfix
 
 .stacktack-container h1, .stacktack-container h2, .stacktack-container h3, .stacktack-container h4
 {
+    padding: 0;
+    
     font-family: "Trebuchet MS";
     color: #588FC7;
 }
@@ -109,6 +111,11 @@ html[xmlns] .clearfix
     margin: 0;
 
     font-size: 1.5em;
+}
+
+.stacktack-question-header
+{
+    margin-bottom: 0.5em;
 }
 
 .stacktack-logo
