@@ -39,7 +39,6 @@
                     classes = item.attr('class').split(' ');
                     for (var i = 0; i < classes.length; i++)
                     {
-                        // replace percent with %
                         clas = classes[i];
                         classTokens = clas.split('-');
                         // if there was a split
@@ -55,7 +54,7 @@
                                     classTokens[j] == Boolean(classToken);
                                     continue;
                                 }
-                                // replace percentages since they % is not a valid class name character
+                                // replace percentages since the % is not a valid class name character
                                 classTokens[j] = classToken.replace(/percent/i, '%');
                             }
                             
@@ -63,7 +62,7 @@
                             if ($.inArray(classTokens[0].toLowerCase(), optionKeys) > -1)
                             {
                                 // it's a list
-                                if (classTokens.length > 2)
+                                if (classTokens.length > 2 || classTokens[0].toLowerCase() == 'filteranswers')
                                 {
                                     itemOptions[classTokens[0]] = classTokens.slice(1);
                                 }
