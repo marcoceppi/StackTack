@@ -60,7 +60,7 @@
                             }
                             
                             // if the first token of the class is an override option
-                            if (optionKeys.indexOf(classTokens[0].toLowerCase()) > -1)
+                            if ($.inArray(classTokens[0].toLowerCase(), optionKeys) > -1)
                             {
                                 // it's a list
                                 if (classTokens.length > 2)
