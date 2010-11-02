@@ -28,9 +28,16 @@
         
         return this.each(function() {
             var $this = $(this);
-            $this.filter('[id^=stacktack]').add($this.find('[id^=stacktack]')).each(function(index, value) {
+            $this.filter('[id^=stacktack], [class^=stacktack]').add($this.find('[id^=stacktack], [class^=stacktack]')).each(function(index, value) {
                 var item = $(value);
-                var questionId = /\d+$/.exec(value.id);
+                // try to retrieve the question id from the id attribute
+                var questionId = '';
+                if (value.id) {
+                    var matches = /\d+$/.exec(value.id);
+                    if (matches.length > 0) {
+                        questionId = matches[0];
+                    }
+                }
 
                 // parse override options from classes
                 var itemOptions = $.extend({}, options);
@@ -44,6 +51,12 @@
                         // if there was a split
                         if (classTokens.length > 1)
                         {
+                            // search for a stacktack id class and use if it if the questionId hasn't been set yet
+                            if (classTokens[0].toLowerCase() == 'stacktack') {
+                                questionId = classTokens[1];
+                                continue;
+                            }
+                            
                             // convert special value strings
                             for (var j = 1; j < classTokens.length; j++)
                             {
@@ -95,7 +108,7 @@
                         'answers': 'true',
                         'body': 'true'
                     },
-                    url: 'http://api.' + options.site + '/' + options.apiVersion + '/questions/' + questionId[0] + '?jsonp=?',
+                    url: 'http://api.' + options.site + '/' + options.apiVersion + '/questions/' + questionId + '?jsonp=?',
                     success: function(data) {
                         loadingElement.remove();
                         
