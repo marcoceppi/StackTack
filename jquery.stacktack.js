@@ -4,25 +4,19 @@
         // a list of options suitable for per-item overrides, lowercase for comparison
         var optionKeys = ['width', 'onlyshowacceptedanswer', 'answerlimit', 'filteranswers', 'showtags'];
         
-        if (options.stylesheet)
-        {
+        if (options.stylesheet) {
             // only include the stylesheet once
-            if ($('link[href=' + options.stylesheet + ']').length === 0)
-            {
+            if ($('link[href=' + options.stylesheet + ']').length === 0) {
                 // necessary for IE to dynamically load stylesheet
-                if (document.createStyleSheet)
-                {
+                if (document.createStyleSheet) {
                     document.createStyleSheet(options.stylesheet);
-                }
-                else
-                {
+                } else {
                     $('<link rel="stylesheet" type="text/css" href="' + options.stylesheet + '" />').appendTo('head'); 
                 }
             }
         }
         
-        function createProfile(user)
-        {
+        function createProfile(user) {
             return '<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + user.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" /><a href="http://www.' + options.site + '/users/' + user.user_id  + '" target="_blank">' + user.display_name + '</a><br/>' + user.reputation + '</div>';
         }
         
@@ -41,16 +35,13 @@
 
                 // parse override options from classes
                 var itemOptions = $.extend({}, options);
-                if (item.attr('class').length)
-                {
+                if (item.attr('class').length) {
                     classes = item.attr('class').split(' ');
-                    for (var i = 0; i < classes.length; i++)
-                    {
+                    for (var i = 0; i < classes.length; i++) {
                         clas = classes[i];
                         classTokens = clas.split('-');
                         // if there was a split
-                        if (classTokens.length > 1)
-                        {
+                        if (classTokens.length > 1) {
                             // search for a stacktack id class and use if it if the questionId hasn't been set yet
                             if (classTokens[0].toLowerCase() == 'stacktack') {
                                 questionId = classTokens[1];
@@ -58,12 +49,10 @@
                             }
                             
                             // convert special value strings
-                            for (var j = 1; j < classTokens.length; j++)
-                            {
+                            for (var j = 1; j < classTokens.length; j++) {
                                 classToken = classTokens[j].toLowerCase();
                                 // replace booleans
-                                if (classToken === 'true' || classToken === 'false')
-                                {
+                                if (classToken === 'true' || classToken === 'false') {
                                     classTokens[j] == Boolean(classToken);
                                     continue;
                                 }
@@ -72,16 +61,13 @@
                             }
                             
                             // if the first token of the class is an override option
-                            if ($.inArray(classTokens[0].toLowerCase(), optionKeys) > -1)
-                            {
+                            if ($.inArray(classTokens[0].toLowerCase(), optionKeys) > -1) {
                                 // it's a list
-                                if (classTokens.length > 2 || classTokens[0].toLowerCase() == 'filteranswers')
-                                {
+                                if (classTokens.length > 2 || classTokens[0].toLowerCase() == 'filteranswers') {
                                     itemOptions[classTokens[0]] = classTokens.slice(1);
                                 }
                                 // it's a single value
-                                else
-                                {
+                                else {
                                     itemOptions[classTokens[0]] = classTokens[1];
                                 }
                             }
@@ -91,8 +77,7 @@
 
                 // appended as last step
                 var containerElement = $('<div class="stacktack-container"></div>');
-                if (itemOptions.width)
-                {
+                if (itemOptions.width) {
                     containerElement.css('width', itemOptions.width);
                 }
                 
@@ -117,11 +102,9 @@
                         var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix">' + createProfile(question.owner) + '<h3><a href="http://www.' + options.site + '/questions/' + question.question_id + '" target="_blank">' + question.title + '</a></h3><div class="stacktack-votes">' + question.score + ' Votes</div></div><div class="stacktack-question-body">' + question.body + '</div></div>');
                         contentElement.append(questionElement);
 
-                        if (itemOptions.showTags)
-                        {
+                        if (itemOptions.showTags) {
                             var tagsElement = $('<ul class="stacktack-tags"></ul>');
-                            for (var i = 0; i < question.tags.length; i++)
-                            {
+                            for (var i = 0; i < question.tags.length; i++) {
                                 var tagElement = $('<li>' + question.tags[i] + '</li>');
                                 tagsElement.append(tagElement);
                             }
@@ -133,54 +116,41 @@
 
                         // filter the answers
                         var visibleAnswers = [];
-                        if (question.answers.length > 0)
-                        {
-                            if (itemOptions.onlyShowAcceptedAnswer)
-                            {
-                                for (var i = 0; i < question.answers.length; i++)
-                                {
-                                    if (question.answers[i].accepted)
-                                    {
+                        if (question.answers.length > 0) {
+                            if (itemOptions.onlyShowAcceptedAnswer) {
+                                for (var i = 0; i < question.answers.length; i++) {
+                                    if (question.answers[i].accepted) {
                                         visibleAnswers.push(i);
                                     }
                                 }
                             }
-                            else if (itemOptions.filterAnswers.length > 0)
-                            {
-                                for (var i = 0; i < question.answers.length; i++)
-                                {
-                                    if ($.inArray(question.answers[i].answer_id.toString(), itemOptions.filterAnswers) > -1)
-                                    {
+                            else if (itemOptions.filterAnswers.length > 0) {
+                                for (var i = 0; i < question.answers.length; i++) {
+                                    if ($.inArray(question.answers[i].answer_id.toString(), itemOptions.filterAnswers) > -1) {
                                         visibleAnswers.push(i);
                                     }
                                 }
                             }
-                            else if (itemOptions.answerLimit > 0)
-                            {
-                                for (var i = 0; i < itemOptions.answerLimit; i++)
-                                {
+                            else if (itemOptions.answerLimit > 0) {
+                                for (var i = 0; i < itemOptions.answerLimit; i++) {
                                     visibleAnswers.push(i);
                                 }
                             }
                         }
 
                         // render the answers
-                        for (var i = 0; i < question.answers.length; i++)
-                        {
+                        for (var i = 0; i < question.answers.length; i++) {
                             var answer = question.answers[i];
                             
                             var answerElement = $('<div class="stacktack-answer"><div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4><div class="stacktack-votes">' + answer.score + ' Votes</div></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
-                            if (answer.accepted)
-                            {
+                            if (answer.accepted) {
                                 answerElement.addClass('stacktack-answer-accepted');
                                 answerElement.find('.stacktack-answer-header h4').prepend('<span alt="Accepted" title="Accepted" class="stacktack-answer-check"></span>');
                                 answerElement.find('.stacktack-votes').append(' | Accepted');
                             }
                             // hide answer if it isn't in the visible list
-                            if (visibleAnswers.length > 0)
-                            {
-                                if ($.inArray(i, visibleAnswers) == -1)
-                                {
+                            if (visibleAnswers.length > 0) {
+                                if ($.inArray(i, visibleAnswers) == -1) {
                                     answerElement.hide();
                                 }
                             }
@@ -191,8 +161,7 @@
                         containerElement.find('a').attr('target', '_blank');
                         
                         // render "more answers" button if the answers were filtered at all
-                        if (visibleAnswers.length > 0)
-                        {
+                        if (visibleAnswers.length > 0) {
                             var moreElement = $('<a href="#" class="stacktack-answers-more">+ More Answers</a>"');
                             moreElement.click(function() {
                                 $(this).hide();
