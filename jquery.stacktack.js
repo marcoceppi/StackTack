@@ -17,9 +17,11 @@
         }
         
         function createProfile(user) {
-        	// display a default gravatar if email_hash is undefined
-        	var emailHash = (user.email_hash) ? user.email_hash : '';
-            return '<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + emailHash + '?d=identicon&s=32" class="stacktack-gravatar" /><a href="http://www.' + options.site + '/users/' + user.user_id  + '" target="_blank">' + user.display_name + '</a><br/>' + user.reputation + '</div>';
+            if (user) {
+                return '<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + user.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" /><a href="http://www.' + options.site + '/users/' + user.user_id  + '" target="_blank">' + user.display_name + '</a><br/>' + user.reputation + '</div>';
+            } else {
+                return ''
+            }
         }
         
         return this.each(function() {
