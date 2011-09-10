@@ -18,9 +18,9 @@
         
         function createProfile(user) {
             if (user) {
-                return '<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + user.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" /><a href="http://www.' + options.site + '/users/' + user.user_id  + '" target="_blank">' + user.display_name + '</a><br/>' + user.reputation + '</div>';
+                return '<div class="stacktack-profile"><img src="http://www.gravatar.com/avatar/' + user.email_hash + '?d=identicon&s=32" class="stacktack-gravatar" /><a href="http://' + options.site + '/users/' + user.user_id  + '" target="_blank">' + user.display_name + '</a><br/>' + user.reputation + '</div>';
             } else {
-                return ''
+                return '';
             }
         }
         
@@ -39,7 +39,8 @@
 
                 // parse override options from classes
                 var itemOptions = $.extend({}, options);
-                if (item.attr('class').length) {
+                var classAttr = item.attr('class');
+                if (classAttr && classAttr.length) {
                     classes = item.attr('class').split(' ');
                     for (var i = 0; i < classes.length; i++) {
                         clas = classes[i];
@@ -57,13 +58,12 @@
                                 classToken = classTokens[j].toLowerCase();
                                 // replace booleans
                                 if (classToken === 'true' || classToken === 'false') {
-                                    classTokens[j] == Boolean(classToken);
+                                    classTokens[j] = (classToken==="true");
                                     continue;
                                 }
                                 // replace percentages since the % is not a valid class name character
                                 classTokens[j] = classToken.replace(/percent/i, '%');
                             }
-                            
                             // if the first token of the class is an override option
                             if ($.inArray(classTokens[0].toLowerCase(), optionKeys) > -1) {
                                 // it's a list
@@ -78,7 +78,6 @@
                         }
                     }
                 }
-
                 // appended as last step
                 var containerElement = $('<div class="stacktack-container"></div>');
                 if (itemOptions.width) {
@@ -103,7 +102,7 @@
                         
                         var question = data.questions[0];
 
-                        var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix">' + createProfile(question.owner) + '<h3><a href="http://www.' + options.site + '/questions/' + question.question_id + '" target="_blank">' + question.title + '</a></h3><div class="stacktack-votes">' + question.score + ' Votes</div></div><div class="stacktack-question-body">' + question.body + '</div></div>');
+                        var questionElement = $('<div class="stacktack-question"> <div class="stacktack-question-header clearfix">' + createProfile(question.owner) + '<h3><a href="http://' + options.site + '/questions/' + question.question_id + '" target="_blank">' + question.title + '</a></h3><div class="stacktack-votes">' + question.score + ' Votes</div></div><div class="stacktack-question-body">' + question.body + '</div></div>');
                         contentElement.append(questionElement);
 
                         if (itemOptions.showTags) {
@@ -146,7 +145,7 @@
                         for (var i = 0; i < question.answers.length; i++) {
                             var answer = question.answers[i];
                             
-                            var answerElement = $('<div class="stacktack-answer"><div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://www.' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4><div class="stacktack-votes">' + answer.score + ' Votes</div></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
+                            var answerElement = $('<div class="stacktack-answer"><div class="stacktack-answer-header clearfix">' + createProfile(answer.owner) + '<h4><a href="http://' + options.site + '/questions/' + question.question_id + '#' + answer.answer_id + '" target="_blank">Answer ' + (i + 1) + '</a></h4><div class="stacktack-votes">' + answer.score + ' Votes</div></div><div class="stacktack-answer-body">' + answer.body + '</div></div>');
                             if (answer.accepted) {
                                 answerElement.addClass('stacktack-answer-accepted');
                                 answerElement.find('.stacktack-answer-header h4').prepend('<span alt="Accepted" title="Accepted" class="stacktack-answer-check"></span>');
